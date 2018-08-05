@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-us" style="font-size: calc(16px + 6 * ((100vw - 320px) / 1024)); background-color: rgba(0,0,0,0.067)">
+
+<head>
+  <title>Book of Life</title>
+  <script src="bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/688654/6800392/css/fonts.css" />
+</head>
+
+<body>
+  <div id="app" style="height: 100%">
+  </div>
+  <script src="index.js"></script>
+  <script>
+    var el = document.getElementById("app");
+    var { height, width } = document.body.getBoundingClientRect();
+    var app = Elm.Main.embed(el, {
+      now: (new Date()).getTime(),
+      data: window.data,
+      height,
+      width
+    });
+  </script>
+</body>
+
+</html>
