@@ -20359,6 +20359,8 @@ var _user$project$Main$intToMonth = function (x) {
 				_p5)('TODO');
 	}
 };
+var _user$project$Main$AuthorText = {ctor: 'AuthorText'};
+var _user$project$Main$Fleuron = {ctor: 'Fleuron'};
 var _user$project$Main$EntryRow = {ctor: 'EntryRow'};
 var _user$project$Main$TitleRow = {ctor: 'TitleRow'};
 var _user$project$Main$DateRow = {ctor: 'DateRow'};
@@ -20374,20 +20376,32 @@ var _user$project$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 			_user$project$Main$DateText,
 			{
 				ctor: '::',
-				_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Gotham SSm A, Gotham SSm B'),
+				_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '0.72rem'),
 				_1: {
 					ctor: '::',
-					_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '0.6rem'),
+					_0: A2(_mdgriffith$style_elements$Style$prop, 'padding-bottom', '1.6rem'),
 					_1: {
 						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Font$weight(800),
+						_0: A2(_mdgriffith$style_elements$Style$prop, 'line-height', '1.6rem'),
 						_1: {
 							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Font$uppercase,
+							_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Gotham SSm A, Gotham SSm B'),
 							_1: {
 								ctor: '::',
-								_0: _mdgriffith$style_elements$Style_Font$letterSpacing(1),
-								_1: {ctor: '[]'}
+								_0: A2(_mdgriffith$style_elements$Style$prop, 'color', '#BBB'),
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$style_elements$Style_Font$weight(700),
+									_1: {
+										ctor: '::',
+										_0: _mdgriffith$style_elements$Style_Font$uppercase,
+										_1: {
+											ctor: '::',
+											_0: _mdgriffith$style_elements$Style_Font$letterSpacing(2),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
 							}
 						}
 					}
@@ -20400,17 +20414,17 @@ var _user$project$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 				_user$project$Main$TitleText,
 				{
 					ctor: '::',
-					_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Hoefler Text A, Hoefler Text B'),
+					_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '2rem'),
 					_1: {
 						ctor: '::',
-						_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '1.67rem'),
+						_0: A2(_mdgriffith$style_elements$Style$prop, 'padding-bottom', '0.25rem'),
 						_1: {
 							ctor: '::',
 							_0: _mdgriffith$style_elements$Style_Color$text(
 								A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.8)),
 							_1: {
 								ctor: '::',
-								_0: _mdgriffith$style_elements$Style_Font$weight(800),
+								_0: _mdgriffith$style_elements$Style_Font$weight(400),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -20423,18 +20437,14 @@ var _user$project$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 					_user$project$Main$EntryText,
 					{
 						ctor: '::',
-						_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Hoefler Text A, Hoefler Text B'),
+						_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '1.1rem'),
 						_1: {
 							ctor: '::',
-							_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '1.25rem'),
+							_0: A2(_mdgriffith$style_elements$Style$prop, 'line-height', '1.67rem'),
 							_1: {
 								ctor: '::',
-								_0: A2(_mdgriffith$style_elements$Style$prop, 'line-height', '1.83rem'),
-								_1: {
-									ctor: '::',
-									_0: _mdgriffith$style_elements$Style_Font$weight(400),
-									_1: {ctor: '[]'}
-								}
+								_0: _mdgriffith$style_elements$Style_Font$weight(400),
+								_1: {ctor: '[]'}
 							}
 						}
 					}),
@@ -20447,19 +20457,39 @@ var _user$project$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 							ctor: '::',
 							_0: _mdgriffith$style_elements$Style_Color$text(
 								A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.8)),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Hoefler Text A, Hoefler Text B'),
+								_1: {ctor: '[]'}
+							}
 						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
 							_mdgriffith$style_elements$Style$style,
-							_user$project$Main$DateRow,
-							{ctor: '[]'}),
+							_user$project$Main$Fleuron,
+							{
+								ctor: '::',
+								_0: A2(_mdgriffith$style_elements$Style$prop, 'font-family', 'Hoefler Text Fleur A, Hoefler Text Fleur B'),
+								_1: {
+									ctor: '::',
+									_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '1.75rem'),
+									_1: {
+										ctor: '::',
+										_0: A2(_mdgriffith$style_elements$Style$prop, 'user-select', 'none'),
+										_1: {
+											ctor: '::',
+											_0: A2(_mdgriffith$style_elements$Style$prop, 'pointer-events', 'none'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}),
 						_1: {
 							ctor: '::',
 							_0: A2(
 								_mdgriffith$style_elements$Style$style,
-								_user$project$Main$TitleRow,
+								_user$project$Main$DateRow,
 								{ctor: '[]'}),
 							_1: {
 								ctor: '::',
@@ -20467,7 +20497,37 @@ var _user$project$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 									_mdgriffith$style_elements$Style$style,
 									_user$project$Main$EntryRow,
 									{ctor: '[]'}),
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_mdgriffith$style_elements$Style$style,
+										_user$project$Main$TitleRow,
+										{
+											ctor: '::',
+											_0: A2(_mdgriffith$style_elements$Style$prop, 'line-height', '2.43rem'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_mdgriffith$style_elements$Style$style,
+											_user$project$Main$AuthorText,
+											{
+												ctor: '::',
+												_0: _mdgriffith$style_elements$Style_Font$italic,
+												_1: {
+													ctor: '::',
+													_0: A2(_mdgriffith$style_elements$Style$prop, 'font-size', '1rem'),
+													_1: {
+														ctor: '::',
+														_0: A2(_mdgriffith$style_elements$Style$prop, 'line-height', '2rem'),
+														_1: {ctor: '[]'}
+													}
+												}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
 							}
 						}
 					}
@@ -20529,21 +20589,17 @@ var _user$project$Main$view = function (_p7) {
 			_user$project$Main$AppContainer,
 			{
 				ctor: '::',
-				_0: _mdgriffith$style_elements$Element_Attributes$padding(50),
+				_0: _mdgriffith$style_elements$Element_Attributes$width(_mdgriffith$style_elements$Element_Attributes$fill),
 				_1: {
 					ctor: '::',
-					_0: _mdgriffith$style_elements$Element_Attributes$width(_mdgriffith$style_elements$Element_Attributes$fill),
+					_0: _mdgriffith$style_elements$Element_Attributes$height(_mdgriffith$style_elements$Element_Attributes$fill),
 					_1: {
 						ctor: '::',
-						_0: _mdgriffith$style_elements$Element_Attributes$height(_mdgriffith$style_elements$Element_Attributes$fill),
+						_0: _mdgriffith$style_elements$Element_Attributes$verticalCenter,
 						_1: {
 							ctor: '::',
-							_0: _mdgriffith$style_elements$Element_Attributes$verticalCenter,
-							_1: {
-								ctor: '::',
-								_0: _mdgriffith$style_elements$Element_Attributes$center,
-								_1: {ctor: '[]'}
-							}
+							_0: _mdgriffith$style_elements$Element_Attributes$center,
+							_1: {ctor: '[]'}
 						}
 					}
 				}
@@ -20556,88 +20612,154 @@ var _user$project$Main$view = function (_p7) {
 					{
 						ctor: '::',
 						_0: _mdgriffith$style_elements$Element_Attributes$maxWidth(
-							_mdgriffith$style_elements$Element_Attributes$px(1024)),
-						_1: {ctor: '[]'}
+							_mdgriffith$style_elements$Element_Attributes$px(831)),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Element_Attributes$height(_mdgriffith$style_elements$Element_Attributes$fill),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
 						_0: A3(
 							_mdgriffith$style_elements$Element$row,
-							_user$project$Main$DateRow,
-							{ctor: '[]'},
+							_user$project$Main$None,
 							{
 								ctor: '::',
-								_0: A3(
-									_mdgriffith$style_elements$Element$paragraph,
-									_user$project$Main$DateText,
-									{ctor: '[]'},
-									A2(
-										_elm_lang$core$List$map,
-										_mdgriffith$style_elements$Element$text,
-										{
-											ctor: '::',
-											_0: rendered.month,
-											_1: {
-												ctor: '::',
-												_0: ' ',
-												_1: {
-													ctor: '::',
-													_0: rendered.day,
-													_1: {ctor: '[]'}
-												}
-											}
-										})),
+								_0: _mdgriffith$style_elements$Element_Attributes$height(
+									_mdgriffith$style_elements$Element_Attributes$fillPortion(1)),
 								_1: {ctor: '[]'}
-							}),
+							},
+							{ctor: '[]'}),
 						_1: {
 							ctor: '::',
 							_0: A3(
 								_mdgriffith$style_elements$Element$row,
-								_user$project$Main$TitleRow,
-								{
-									ctor: '::',
-									_0: _mdgriffith$style_elements$Element_Attributes$paddingTop(15),
-									_1: {ctor: '[]'}
-								},
+								_user$project$Main$DateRow,
+								{ctor: '[]'},
 								{
 									ctor: '::',
 									_0: A3(
-										_mdgriffith$style_elements$Element$el,
-										_user$project$Main$TitleText,
+										_mdgriffith$style_elements$Element$paragraph,
+										_user$project$Main$DateText,
 										{ctor: '[]'},
-										_mdgriffith$style_elements$Element$text(current_title)),
+										A2(
+											_elm_lang$core$List$map,
+											_mdgriffith$style_elements$Element$text,
+											{
+												ctor: '::',
+												_0: rendered.month,
+												_1: {
+													ctor: '::',
+													_0: ' ',
+													_1: {
+														ctor: '::',
+														_0: rendered.day,
+														_1: {ctor: '[]'}
+													}
+												}
+											})),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
 								ctor: '::',
 								_0: A3(
 									_mdgriffith$style_elements$Element$row,
-									_user$project$Main$EntryRow,
+									_user$project$Main$TitleRow,
 									{
 										ctor: '::',
-										_0: _mdgriffith$style_elements$Element_Attributes$paddingTop(15),
+										_0: _mdgriffith$style_elements$Element_Attributes$paddingTop(10),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
 										_0: A3(
 											_mdgriffith$style_elements$Element$paragraph,
-											_user$project$Main$EntryText,
+											_user$project$Main$TitleText,
+											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: _mdgriffith$style_elements$Element_Attributes$center,
+												_0: A3(
+													_mdgriffith$style_elements$Element$el,
+													_user$project$Main$None,
+													{ctor: '[]'},
+													_mdgriffith$style_elements$Element$text(current_title)),
 												_1: {ctor: '[]'}
-											},
-											A2(
-												_elm_lang$core$List$map,
-												function (t) {
-													return _mdgriffith$style_elements$Element$text(
-														A2(_elm_lang$core$Basics_ops['++'], t, ' '));
-												},
-												paragraphs)),
+											}),
 										_1: {ctor: '[]'}
 									}),
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: A3(
+										_mdgriffith$style_elements$Element$row,
+										_user$project$Main$EntryRow,
+										{
+											ctor: '::',
+											_0: _mdgriffith$style_elements$Element_Attributes$paddingTop(20),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A3(
+												_mdgriffith$style_elements$Element$paragraph,
+												_user$project$Main$EntryText,
+												{
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Element_Attributes$center,
+													_1: {ctor: '[]'}
+												},
+												A2(
+													_elm_lang$core$List$map,
+													function (t) {
+														return _mdgriffith$style_elements$Element$text(
+															A2(_elm_lang$core$Basics_ops['++'], t, ' '));
+													},
+													paragraphs)),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A3(
+											_mdgriffith$style_elements$Element$el,
+											_user$project$Main$Fleuron,
+											{
+												ctor: '::',
+												_0: _mdgriffith$style_elements$Element_Attributes$paddingTop(25),
+												_1: {
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Element_Attributes$paddingBottom(20),
+													_1: {ctor: '[]'}
+												}
+											},
+											_mdgriffith$style_elements$Element$text('6')),
+										_1: {
+											ctor: '::',
+											_0: A3(
+												_mdgriffith$style_elements$Element$el,
+												_user$project$Main$AuthorText,
+												{
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Element_Attributes$paddingBottom(40),
+													_1: {ctor: '[]'}
+												},
+												_mdgriffith$style_elements$Element$text('Jiddu Krishnamurti')),
+											_1: {
+												ctor: '::',
+												_0: A3(
+													_mdgriffith$style_elements$Element$row,
+													_user$project$Main$None,
+													{
+														ctor: '::',
+														_0: _mdgriffith$style_elements$Element_Attributes$height(
+															_mdgriffith$style_elements$Element_Attributes$fillPortion(3)),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
 							}
 						}
 					}),

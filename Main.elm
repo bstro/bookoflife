@@ -288,17 +288,21 @@ view { now, data, month, day } =
     in
     El.viewport stylesheet <|
         column AppContainer
-            [ padding 50, width fill, height fill, verticalCenter, center ]
+            [ width fill, height fill, verticalCenter, center ]
             [ column None
-                [ maxWidth (px 1024) ]
-                [ row DateRow [] [ paragraph DateText [] (List.map text [ rendered.month, " ", rendered.day ]) ]
-                , row TitleRow [ paddingTop 15 ] [ text current_title |> el TitleText [] ]
+                [ maxWidth (px 831), height <| fill ]
+                [ row None [ height <| fillPortion 1 ] []
+                , row DateRow [] [ paragraph DateText [] (List.map text [ rendered.month, " ", rendered.day ]) ]
+                , row TitleRow [ paddingTop 10 ] [ paragraph TitleText [] [ text current_title |> el None [] ] ]
                 , row EntryRow
-                    [ paddingTop 15 ]
+                    [ paddingTop 20 ]
                     [ paragraph EntryText
                         [ center ]
                         (List.map (\t -> t ++ " " |> text) paragraphs)
                     ]
+                , "6" |> text |> el Fleuron [ paddingTop 25, paddingBottom 20 ]
+                , "Jiddu Krishnamurti" |> text |> el AuthorText [ paddingBottom 40 ]
+                , row None [ height <| fillPortion 3 ] []
                 ]
             ]
 
@@ -312,45 +316,50 @@ type Styles
     | DateRow
     | TitleRow
     | EntryRow
-
-
-
--- [ Style.prop "font-family" "Archer SSm A, Archer SSm B"
--- [ Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
--- [ Style.prop "font-family" "Gotham SSm A, Gotham SSm B"
--- [ Style.prop "font-family" "Operator Mono A, Operator Mono B"
+    | Fleuron
+    | AuthorText
 
 
 stylesheet : StyleSheet Styles v
 stylesheet =
     Style.styleSheet
         [ style DateText
-            [ Style.prop "font-family" "Gotham SSm A, Gotham SSm B"
-            , Style.prop "font-size" "0.6rem"
-            , Font.weight 800
+            [ Style.prop "font-size" "0.72rem"
+            , Style.prop "padding-bottom" "1.6rem"
+            , Style.prop "line-height" "1.6rem"
+            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B"
+            , Style.prop "color" "#BBB"
+            , Font.weight 700
             , Font.uppercase
-            , Font.letterSpacing 1
-
-            -- , Font.weight 500
+            , Font.letterSpacing 2
             ]
         , style TitleText
-            [ Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
-            , Style.prop "font-size" "1.67rem"
+            [ Style.prop "font-size" "2rem"
+            , Style.prop "padding-bottom" "0.25rem"
             , Color.text <| Color.rgba 0 0 0 0.8
-            , Font.weight 800
+            , Font.weight 400
             ]
         , style EntryText
-            [ Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
-            , Style.prop "font-size" "1.25rem"
-            , Style.prop "line-height" "1.83rem"
+            [ Style.prop "font-size" "1.1rem"
+            , Style.prop "line-height" "1.67rem"
             , Font.weight 400
             ]
         , style AppContainer
             [ Color.text <| Color.rgba 0 0 0 0.8
-
-            -- , Style.prop "font-size" "calc(16px + 6 * ((100vw - 320px) / 1024))"
+            , Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
+            ]
+        , style Fleuron
+            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B"
+            , Style.prop "font-size" "1.75rem"
+            , Style.prop "user-select" "none"
+            , Style.prop "pointer-events" "none"
             ]
         , style DateRow []
-        , style TitleRow []
         , style EntryRow []
+        , style TitleRow [ Style.prop "line-height" "2.43rem" ]
+        , style AuthorText
+            [ Font.italic
+            , Style.prop "font-size" "1rem"
+            , Style.prop "line-height" "2rem"
+            ]
         ]
