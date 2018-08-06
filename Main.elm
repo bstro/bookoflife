@@ -9,6 +9,8 @@ import Style.Color as Color
 import Style.Font as Font
 import Time exposing (Time)
 import Time.DateTime as DateTime exposing (DateTime)
+import Time.TimeZones as TimeZones
+import Time.ZonedDateTime as ZonedDateTime
 import Window
 
 
@@ -30,6 +32,7 @@ type alias BookOfLife =
 
 type alias Model =
     { now : DateTime
+    , timezone : String
     , month : Maybe Month
     , day : Maybe Int
     , data : BookOfLife
@@ -187,6 +190,7 @@ monthToString x =
 
 type alias Flags =
     { now : Time
+    , timezone : String
     , data : BookOfLife
     , height : Int
     , width : Int
@@ -194,8 +198,9 @@ type alias Flags =
 
 
 init : Flags -> ( Model, Cmd Msg )
-init { now, data, height, width } =
+init { now, data, height, width, timezone } =
     { now = DateTime.fromTimestamp now
+    , timezone = timezone
     , month = Nothing
     , day = Nothing
     , data = data
@@ -244,15 +249,18 @@ entryForDate month day entry =
 
 
 view : Model -> Html Msg
-view { now, data, month, day } =
+view { now, data, month, day, timezone } =
     let
+        localTime =
+            ZonedDateTime.fromDateTime (Maybe.withDefault (TimeZones.utc ()) (TimeZones.fromName timezone)) now
+
         current_month =
             case month of
                 Just x ->
                     x
 
                 Nothing ->
-                    DateTime.month now |> intToMonth
+                    ZonedDateTime.month localTime |> intToMonth
 
         current_day =
             case day of
@@ -260,7 +268,7 @@ view { now, data, month, day } =
                     x
 
                 Nothing ->
-                    DateTime.day now
+                    ZonedDateTime.day localTime
 
         current_entry =
             List.filter (entryForDate current_month current_day) data.entries |> List.head

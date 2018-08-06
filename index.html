@@ -18,6 +18,7 @@
     var { height, width } = document.body.getBoundingClientRect();
     var app = Elm.Main.embed(el, {
       now: (new Date()).getTime(),
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       data: window.data,
       height,
       width
