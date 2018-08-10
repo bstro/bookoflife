@@ -20,11 +20,16 @@ type alias BookOfLife =
     }
 
 
+type alias Day =
+    Int
+
+
+type alias Month =
+    Int
+
+
 type alias Model =
-    { date : Maybe Date
-    , month : Maybe Int
-    , day : Maybe Int
-    }
+    ( Month, Day )
 
 
 type Msg

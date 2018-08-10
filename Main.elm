@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Data exposing (..)
-import Date exposing (Date, Day, Month)
+import Date exposing (Date)
 import Element as El exposing (Element, column, el, empty, html, paragraph, row, text)
 import Element.Attributes exposing (..)
 import Html as H exposing (Html)
@@ -12,34 +12,23 @@ import Types exposing (..)
 import Utils exposing (..)
 
 
-init : ( Model, Cmd Msg )
-init =
-    { date = Nothing
-    , month = Nothing
-    , day = Nothing
-    }
-        ! [ getTime ]
+type alias Flags =
+    { month : Int, day : Int }
 
 
-getTime : Cmd Msg
-getTime =
-    Time.now
-        |> Task.perform Tick
-
-
-setDate : Cmd Msg
-setDate =
-    Date.now |> Task.perform SetDate
-
-
-main : Program Never Model Msg
+main : Program Flags Model Msg
 main =
-    H.program
+    H.programWithFlags
         { init = init
+        , subscriptions = subscriptions
         , update = update
         , view = view
-        , subscriptions = subscriptions
         }
+
+
+init : Flags -> ( Model, Cmd Msg )
+init { month, day } =
+    ( day, month ) ! [ getTime ]
 
 
 subscriptions : Model -> Sub Msg
@@ -56,40 +45,17 @@ update msg model =
             model ! [ setDate ]
 
         SetDate date ->
-            { model | date = Just date } ! []
+            ( monthToInt <| Date.month date
+            , Date.day date
+            )
+                ! []
 
 
 view : Model -> Html Msg
-view { date, month, day } =
+view ( month, day ) =
     let
-        current_month =
-            case month of
-                Just x ->
-                    x
-
-                Nothing ->
-                    case date of
-                        Just d ->
-                            monthToInt <| Date.month d
-
-                        Nothing ->
-                            1
-
-        current_day =
-            case day of
-                Just x ->
-                    x
-
-                Nothing ->
-                    case date of
-                        Just d ->
-                            Date.day d
-
-                        Nothing ->
-                            1
-
         current_entry =
-            List.filter (entryForDate current_month current_day) bookOfLife |> List.head
+            List.head <| List.filter (entryForDate month day) bookOfLife
 
         current_title =
             case current_entry of
@@ -108,8 +74,8 @@ view { date, month, day } =
                     []
 
         rendered =
-            { month = current_month |> toString
-            , day = current_day |> toString
+            { month = monthIntToString month
+            , day = toString day
             }
     in
     El.viewport stylesheet <|

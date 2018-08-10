@@ -1,7 +1,20 @@
 module Utils exposing (..)
 
 import Date exposing (..)
+import Task
+import Time exposing (now)
 import Types exposing (..)
+
+
+getTime : Cmd Msg
+getTime =
+    Time.now
+        |> Task.perform Tick
+
+
+setDate : Cmd Msg
+setDate =
+    Date.now |> Task.perform SetDate
 
 
 entryForDate : Int -> Int -> Entry -> Bool
@@ -12,47 +25,50 @@ entryForDate month day entry =
         False
 
 
-monthToString : Month -> String
-monthToString m =
+monthIntToString : Int -> String
+monthIntToString m =
     case m of
-        Jan ->
+        1 ->
             "January"
 
-        Feb ->
+        2 ->
             "February"
 
-        Mar ->
+        3 ->
             "March"
 
-        Apr ->
+        4 ->
             "April"
 
-        May ->
+        5 ->
             "May"
 
-        Jun ->
+        6 ->
             "June"
 
-        Jul ->
+        7 ->
             "July"
 
-        Aug ->
+        8 ->
             "August"
 
-        Sep ->
+        9 ->
             "September"
 
-        Oct ->
+        10 ->
             "October"
 
-        Nov ->
+        11 ->
             "November"
 
-        Dec ->
+        12 ->
             "December"
 
+        _ ->
+            "Invalid month"
 
-monthToInt : Month -> Int
+
+monthToInt : Date.Month -> Int
 monthToInt m =
     case m of
         Jan ->
