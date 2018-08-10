@@ -1,49 +1,20 @@
 module Main exposing (..)
 
-import Color exposing (..)
 import Data exposing (..)
 import Date exposing (Date, Day, Month)
-import Element as El exposing (Element, column, el, empty, paragraph, row, text)
+import Element as El exposing (Element, column, el, empty, html, paragraph, row, text)
 import Element.Attributes exposing (..)
 import Html as H exposing (Html)
-import Style exposing (StyleSheet, style)
-import Style.Color as Color
-import Style.Font as Font
+import Styles exposing (..)
 import Task
 import Time exposing (Time)
-import Time.DateTime as DateTime exposing (DateTime)
-
-
-type alias Entry =
-    { month : Month
-    , day : Day
-    , title : String
-    , content : List String
-    }
-
-
-type alias BookOfLife =
-    { entries : List Entry
-    , author : String
-    , edition : Int
-    , docsite : String
-    }
-
-
-type alias Model =
-    { now : Maybe Date
-    , month : Maybe Month
-    , day : Maybe Day
-    }
-
-
-type Msg
-    = Tick Date
+import Types exposing (..)
+import Utils exposing (..)
 
 
 init : ( Model, Cmd Msg )
 init =
-    { now = Nothing
+    { date = Nothing
     , month = Nothing
     , day = Nothing
     }
@@ -52,8 +23,13 @@ init =
 
 getTime : Cmd Msg
 getTime =
-    Date.now
+    Time.now
         |> Task.perform Tick
+
+
+setDate : Cmd Msg
+setDate =
+    Date.now |> Task.perform SetDate
 
 
 main : Program Never Model Msg
@@ -76,22 +52,15 @@ subscriptions model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Tick now ->
-            ( { model | now = Just now }
-            , Cmd.none
-            )
+        Tick time ->
+            model ! [ setDate ]
 
-
-entryForDate : Month -> Day -> Entry -> Bool
-entryForDate month day entry =
-    if entry.month == month && entry.day == day then
-        True
-    else
-        False
+        SetDate date ->
+            { model | date = Just date } ! []
 
 
 view : Model -> Html Msg
-view { now, month, day } =
+view { date, month, day } =
     let
         current_month =
             case month of
@@ -99,12 +68,12 @@ view { now, month, day } =
                     x
 
                 Nothing ->
-                    case now of
-                        Just n ->
-                            Date.month n
+                    case date of
+                        Just d ->
+                            monthToInt <| Date.month d
 
                         Nothing ->
-                            Date.Jan
+                            1
 
         current_day =
             case day of
@@ -112,12 +81,12 @@ view { now, month, day } =
                     x
 
                 Nothing ->
-                    case now of
-                        Just n ->
-                            Date.day n
+                    case date of
+                        Just d ->
+                            Date.day d
 
                         Nothing ->
-                            Date.Mon
+                            1
 
         current_entry =
             List.filter (entryForDate current_month current_day) bookOfLife |> List.head
@@ -163,61 +132,3 @@ view { now, month, day } =
                 , row None [ height <| fillPortion 3 ] []
                 ]
             ]
-
-
-type Styles
-    = None
-    | AppContainer
-    | DateText
-    | HrRow
-    | TitleText
-    | EntryText
-    | DateRow
-    | TitleRow
-    | EntryRow
-    | Fleuron
-    | AuthorText
-
-
-stylesheet : StyleSheet Styles v
-stylesheet =
-    Style.styleSheet
-        [ style AppContainer
-            [ Color.text <| Color.rgba 0 0 0 0.8
-            , Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
-            ]
-        , style DateRow []
-        , style DateText
-            [ Style.prop "font-size" "0.67rem"
-            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B"
-            , Style.prop "color" "#BBB"
-            , Font.uppercase
-            , Font.letterSpacing 2
-            ]
-        , style HrRow
-            [ Style.prop "border-top" "1px solid #DDD"
-            ]
-        , style TitleRow [ Style.prop "line-height" "2.667rem" ]
-        , style TitleText
-            [ Style.prop "font-size" "2rem"
-            , Color.text <| Color.rgba 0 0 0 0.8
-            , Font.weight 400
-            ]
-        , style EntryRow []
-        , style EntryText
-            [ Style.prop "font-size" "1.1rem"
-            , Style.prop "line-height" "1.67rem"
-            , Font.weight 400
-            ]
-        , style Fleuron
-            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B"
-            , Style.prop "font-size" "1.75rem"
-            , Style.prop "user-select" "none"
-            , Style.prop "pointer-events" "none"
-            ]
-        , style AuthorText
-            [ Font.italic
-            , Style.prop "font-size" "1rem"
-            , Style.prop "line-height" "2rem"
-            ]
-        ]
