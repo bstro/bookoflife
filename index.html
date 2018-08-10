@@ -2,28 +2,22 @@
 <html lang="en-us" style="font-size: calc(16px + 2 * ((100vw - 320px) / 831.1)); width: 100%; height: 100%">
 
 <head>
-  <title>Book of Life</title>
-  <script src="bootstrap.min.js"></script>
-  <script src="index.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/688654/6800392/css/fonts.css" />
+	<title>Book of Life</title>
+	<script src="bootstrap.min.js"></script>
+	<script src="index.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/688654/6800392/css/fonts.css" />
 </head>
 
 <body style="background-color: rgba(0,0,0,0.067); width: 100%; height: 100%;">
-  <div id="app" style="height: 100%; box-sizing: border-box; padding: 40px; transform: scale(0.9667);">
-  </div>
-  <script>
-    var el = document.getElementById("app");
-    var { height, width } = document.body.getBoundingClientRect();
-    var app = Elm.Main.embed(el, {
-      now: (new Date()).getTime(),
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      data: window.data,
-      height,
-      width
-    });
-  </script>
+	<div id="app" style="height: 100%; box-sizing: border-box; padding: 40px; transform: scale(0.9667);">
+	</div>
+	<script>
+		var el = document.getElementById("app");
+		var { height, width } = document.body.getBoundingClientRect();
+		var app = Elm.Main.embed(el);
+	</script>
 </body>
 
 </html>
