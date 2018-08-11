@@ -52,7 +52,7 @@ stylesheet =
             , Font.weight 400
             ]
         , style Fleuron
-            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B, Wingdings"
+            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B, Wingdings, Webdings"
             , Style.prop "font-size" "1.75rem"
             , Style.prop "user-select" "none"
             , Style.prop "pointer-events" "none"
