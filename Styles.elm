@@ -30,7 +30,8 @@ stylesheet =
         , style DateRow []
         , style DateText
             [ Style.prop "font-size" "0.67rem"
-            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B, Avenir Next Demi Bold, Helvetica Neue, Helvetica, Arial"
+            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B, Avenir Next, Helvetica Neue, Helvetica, Arial"
+            , Style.prop "font-weight" "700"
             , Style.prop "color" "#BBB"
             , Font.uppercase
             , Font.letterSpacing 2
