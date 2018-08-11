@@ -25,12 +25,12 @@ stylesheet =
     Style.styleSheet
         [ style AppContainer
             [ Color.text <| Color.rgba 0 0 0 0.8
-            , Style.prop "font-family" "Hoefler Text A, Hoefler Text B"
+            , Style.prop "font-family" "Hoefler Text A, Hoefler Text B, Iowan Old Style, Georgia, Times, Times New Roman"
             ]
         , style DateRow []
         , style DateText
             [ Style.prop "font-size" "0.67rem"
-            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B"
+            , Style.prop "font-family" "Gotham SSm A, Gotham SSm B, Avenir Next Demi Bold, Helvetica Neue, Helvetica, Arial"
             , Style.prop "color" "#BBB"
             , Font.uppercase
             , Font.letterSpacing 2
@@ -51,7 +51,7 @@ stylesheet =
             , Font.weight 400
             ]
         , style Fleuron
-            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B"
+            [ Style.prop "font-family" "Hoefler Text Fleur A, Hoefler Text Fleur B, Wingdings"
             , Style.prop "font-size" "1.75rem"
             , Style.prop "user-select" "none"
             , Style.prop "pointer-events" "none"

@@ -6,7 +6,6 @@ import Element as El exposing (Element, column, el, empty, html, paragraph, row,
 import Element.Attributes exposing (..)
 import Html as H exposing (Html)
 import Styles exposing (..)
-import Task
 import Time exposing (Time)
 import Types exposing (..)
 import Utils exposing (..)
